@@ -28,6 +28,7 @@ class ForkWait(unittest.TestCase):
         self.alive = {}
         
         self.stop = 0
+        
         self.threads = []
 
     def tearDown(self):
