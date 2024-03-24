@@ -32,10 +32,12 @@ class ForkWait(unittest.TestCase):
 
     def tearDown(self):
         # Stop threads
+        
         self.stop = 1
         for thread in self.threads:
             thread.join()
         thread = None
+        
         self.threads.clear()
         support.threading_cleanup(*self._threading_key)
 
