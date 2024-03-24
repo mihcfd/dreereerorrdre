@@ -31,6 +31,7 @@ class ForkWait(unittest.TestCase):
         self.threads = []
 
     def tearDown(self):
+        
         # Stop threads
         
         self.stop = 1
