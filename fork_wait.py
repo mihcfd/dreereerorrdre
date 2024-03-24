@@ -36,6 +36,7 @@ class ForkWait(unittest.TestCase):
         
         self.stop = 1
         for thread in self.threads:
+            
             thread.join()
         thread = None
         
