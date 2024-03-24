@@ -3,6 +3,7 @@
 To test different wait behavior, override the wait_impl method.
 
 We want fork1() semantics -- only the forking thread survives in the
+
 child after a fork().
 
 On some systems (e.g. Solaris without posix threads) we find that all
@@ -11,6 +12,7 @@ active threads survive in the child after a fork(); this is an error.
 
 import os, sys, time, unittest
 import threading
+
 import test.support as support
 
 
@@ -23,6 +25,7 @@ class ForkWait(unittest.TestCase):
     def setUp(self):
         self._threading_key = support.threading_setup()
         self.alive = {}
+        
         self.stop = 0
         self.threads = []
 
