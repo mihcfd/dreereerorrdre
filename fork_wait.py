@@ -23,6 +23,7 @@ NUM_THREADS = 4
 class ForkWait(unittest.TestCase):
 
     def setUp(self):
+        
         self._threading_key = support.threading_setup()
         self.alive = {}
         
