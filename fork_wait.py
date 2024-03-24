@@ -7,6 +7,7 @@ We want fork1() semantics -- only the forking thread survives in the
 child after a fork().
 
 On some systems (e.g. Solaris without posix threads) we find that all
+
 active threads survive in the child after a fork(); this is an error.
 """
 
@@ -56,6 +57,7 @@ class ForkWait(unittest.TestCase):
         for i in range(10):
             # waitpid() shouldn't hang, but some of the buildbots seem to hang
             # in the forking tests.  This is an attempt to fix the problem.
+            
             spid, status = os.waitpid(cpid, os.WNOHANG)
             if spid == cpid:
                 break
@@ -72,6 +74,7 @@ class ForkWait(unittest.TestCase):
 
         # busy-loop to wait for threads
         deadline = time.monotonic() + 10.0
+        
         while len(self.alive) < NUM_THREADS:
             time.sleep(0.1)
             if deadline < time.monotonic():
@@ -90,6 +93,7 @@ class ForkWait(unittest.TestCase):
         if cpid == 0:
             # Child
             time.sleep(LONGSLEEP)
+            
             n = 0
             for key in self.alive:
                 if self.alive[key] != prefork_lives[key]:
