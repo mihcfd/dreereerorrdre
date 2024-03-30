@@ -19,6 +19,7 @@ import test.support as support
 
 LONGSLEEP = 2
 SHORTSLEEP = 0.5
+
 NUM_THREADS = 4
 
 class ForkWait(unittest.TestCase):
