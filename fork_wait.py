@@ -44,6 +44,7 @@ class ForkWait(unittest.TestCase):
         thread = None
         
         self.threads.clear()
+        
         support.threading_cleanup(*self._threading_key)
 
     def f(self, id):
