@@ -63,18 +63,22 @@ class ForkWait(unittest.TestCase):
             # in the forking tests.  This is an attempt to fix the problem.
             
             spid, status = os.waitpid(cpid, os.WNOHANG)
+            
             if spid == cpid:
                 break
             time.sleep(2 * SHORTSLEEP)
 
         self.assertEqual(spid, cpid)
+        
         self.assertEqual(status, 0, "cause = %d, exit = %d" % (status&0xff, status>>8))
 
     def test_wait(self):
         for i in range(NUM_THREADS):
             thread = threading.Thread(target=self.f, args=(i,))
             thread.start()
+            
             self.threads.append(thread)
+            
 
         # busy-loop to wait for threads
         deadline = time.monotonic() + 10.0
