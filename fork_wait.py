@@ -103,12 +103,14 @@ class ForkWait(unittest.TestCase):
 
         if cpid == 0:
             # Child
+            
             time.sleep(LONGSLEEP)
             
             n = 0
             for key in self.alive:
                 if self.alive[key] != prefork_lives[key]:
                     n += 1
+                    
             os._exit(n)
         else:
             # Parent
