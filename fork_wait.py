@@ -62,6 +62,7 @@ class ForkWait(unittest.TestCase):
             # waitpid() shouldn't hang, but some of the buildbots seem to hang
             # in the forking tests.  This is an attempt to fix the problem.
             
+            
             spid, status = os.waitpid(cpid, os.WNOHANG)
             
             if spid == cpid:
@@ -84,6 +85,7 @@ class ForkWait(unittest.TestCase):
         deadline = time.monotonic() + 10.0
         
         while len(self.alive) < NUM_THREADS:
+            
             time.sleep(0.1)
             if deadline < time.monotonic():
                 break
@@ -92,6 +94,7 @@ class ForkWait(unittest.TestCase):
         self.assertEqual(a, list(range(NUM_THREADS)))
 
         prefork_lives = self.alive.copy()
+        
 
         if sys.platform in ['unixware7']:
             cpid = os.fork1()
