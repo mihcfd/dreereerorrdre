@@ -108,6 +108,7 @@ class ForkWait(unittest.TestCase):
             
             n = 0
             for key in self.alive:
+                
                 if self.alive[key] != prefork_lives[key]:
                     n += 1
                     
