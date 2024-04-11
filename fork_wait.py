@@ -97,6 +97,7 @@ class ForkWait(unittest.TestCase):
         
 
         if sys.platform in ['unixware7']:
+            
             cpid = os.fork1()
         else:
             cpid = os.fork()
@@ -110,6 +111,7 @@ class ForkWait(unittest.TestCase):
             for key in self.alive:
                 
                 if self.alive[key] != prefork_lives[key]:
+                    
                     n += 1
                     
             os._exit(n)
